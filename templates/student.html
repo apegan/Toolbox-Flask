@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
    <head>
-     <title>Hello</title>
+     <title>Hello there! Look at this pretty poll</title>
    </head>
  <body>
-      <form action ="/hello">
+      <form action ="/login", method = 'post'>
         {% for i in data %}
-          {{ i }}<input type="text" name="field" value=""><br>
+          {% for field, question in dict %}
+            {{ question }}<input type="text" name="{{field}}"><br>
+          {% endfor %}
         {% endfor %}
         <input type="submit" value="Submit" />
       </form>
-
    </body>
 </html>
