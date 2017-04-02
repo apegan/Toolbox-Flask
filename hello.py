@@ -1,13 +1,29 @@
 """
+Alisha Pegan Flask Toolbox
 Simple "Hello, World" application using Flask
 """
 
-from flask import Flask
+from flask import Flask, render_template, request
 app = Flask(__name__)
+# app.run(host='0.0.0.0')     # run on all public IPS
+# app.run(debug=True)         # server will reload on code changes
+
+
+# @app.route('/')
+# def hello_world():
+#     return render_template('index.html')
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def student():
+    return render_template('student.html')
+
+
+@app.route('/result', methods=['POST', 'GET'])
+def result():
+    if request.method == 'POST':
+        result = request.form
+        return render_template("result.html", result=result)
+
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
